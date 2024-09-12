@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrodoStudio</title>
+    <link rel="stylesheet" href="BrodoStudio.css">
+	<link rel="javascript" href="brodostudio.js">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #18162b;
+            color: #FFFFFF;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #18162b;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-logo {
+            font-size: 2rem;
+            color: #f4c12a;
+            font-weight: bold;
+        }
+        .navbar-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1rem;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+        .navbar-links a:hover {
+            color: #f4c12a;
+            text-shadow: 0 0 10px rgba(244, 193, 42, 0.6);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+       
+        .hero .btn {
+            background-color: #fff;
+            color: #C0417E;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .hero .btn:hover {
+            background-color: #f4c12a;
+            color: #fff;
+        }
+
+        #key-features {
+            padding: 50px 20px;
+            background-color: #191834;
+            border-bottom: 2px solid #f4c12a;
+        }
+        #key-features .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #f4c12a;
+            text-align: center;
+        }
+        #key-features .features-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            justify-content: center;
+        }
+        #key-features .feature-item {
+            background-color: #26224C;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        #key-features .feature-item:hover {
+            transform: scale(1.05);
+            background-color: #605991;
+        }
+        #key-features .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f4c12a;
+        }
+        #key-features .feature-item p {
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+
+        #user-reviews {
+            padding: 50px 20px;
+            background-color: #26224C;
+		    border-bottom: 2px solid #f4c12a;
+		    border-bottom: 2px solid #f4c12a;
+
+
+        }
+        #user-reviews .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #f4c12a;
+            text-align: center;
+        }
+        #user-reviews .reviews-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        #user-reviews .review-item {
+            background-color: #494379;
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        #user-reviews .review-item:hover {
+            transform: scale(1.05);
+            background-color: #605991;
+        }
+        #user-reviews .review-item p {
+            font-size: 1.1rem;
+            color: #FFFFFF;
+        }
+        #user-reviews .review-item .name {
+            font-weight: bold;
+            color: #f4c12a;
+        }
+
+        #creative-tools {
+            padding: 50px 20px;
+            background-color: #39327A;
+		    border-bottom: 2px solid #f4c12a;
+
+        }
+        #creative-tools .section-header h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #f4c12a;
+            text-align: center;
+        }
+        #creative-tools .tools-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-content: center;
+        }
+        #creative-tools .tool-item {
+            background-color: #605991;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        #creative-tools .tool-item:hover {
+            transform: scale(1.05);
+            background-color: #26224C;
+        }
+        #creative-tools .tool-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #f4c12a;
+        }
+        #creative-tools .tool-item p {
+            font-size: 1rem;
+            color: #FFFFFF;
+        }
+        .tab-container {
+            margin: 50px auto;
+            width: 80%;
+            background-color: #18162B;
+        }
+        .tabs {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-bottom: 2px solid #f4c12a;
+        }
+        .tabs li {
+            padding: 15px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #fff;
+            text-align: center;
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+            cursor: pointer;
+            flex: 1;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .tabs li[data-tab="brodo-bundle"] {
+            background: linear-gradient(135deg, #ff007f, #ff7e00, #7d00ff);
+        }
+        .tabs li[data-tab="brodo-ge"] {
+            background: #d0a4f5;
+        }
+        .tabs li[data-tab="brodo-ve"] {
+            background: #ff6f61;
+        }
+        .tabs li[data-tab="brodo-ap"] {
+            background: #f3e761;
+        }
+        .tabs li[data-tab="brodo-wi"] {
+            background: #f7a1b6;
+        }
+        .tabs li[data-tab="brodo-wd"] {
+            background: #a7f4e8;
+        }
+        .tabs li:hover, .tabs li.active {
+            color: #18162b;
+            transform: scale(1.05);
+        }
+        .tabs li.active {
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 3px solid #f4c12a;
+            background-color: #393D6F;
+            color: #fff;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        .content-section {
+            padding: 20px
+        .content-section {
+            padding: 20px;
+            background-color: #18162b;
+			
+        }
+
+        footer {
+            padding: 20px;
+            background-color: #191834;
+            color: #FFFFFF;
+            text-align: center;
+        }
+        footer p {
+            margin: 10px 0;
+        }
+        footer a {
+            color: #f4c12a;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">BrodoStudio</div>
+        <div class="navbar-links">
+        <a href="BrodoStudio Home Page.html">Home</a> <a href="Product Page.html">Our Products</a> <a href="About Us.html">About Us</a> <a href="FAQ Page.html">FAQ</a> <a href="Contact Page.html">Our Contacts</a> </div>
+    </nav>
+
+    <section id="hero" class="hero">
+        <h1><span class="it">Design Ecellence until it Defines Eminence&nbsp;</span>
+        </h1>
+        <p>Discover BrodoStudio’s full potential today. Try it risk-free and see how our tools can elevate your creative projects. </p>
+        <a href="Product Page.html" class="btn">Explore Now</a>
+    </section>
+
+    <section id="key-features">
+        <div class="section-header">
+            <h2>Key Features</h2>
+        </div>
+        <div class="features-container">
+            <div class="feature-item">
+                <h3>Intuitive Design Interface</h3>
+                <p>Our apps offer a user-friendly experience, making creativity accessible and enjoyable for everyone, from beginners to pros.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Seamless Workflow:</h3>
+                <p>Switch effortlessly between apps within the BrodoStudio suite, streamlining your creative process. Design, edit, and develop with tools that work together smoothly, saving you time and hassle.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Affordability</h3>
+                <p>Enjoy top-tier design tools without breaking the bank. We provide professional software at a fraction of the cost, making it your go-to choice for quality without the hefty price tag.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Powerful Features, simplified: </h3>
+                <p>Combine your creativity with advanced features in an easy-to-navigate interface, allowing you to create stunning projects without being bogged down by complexity.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="user-reviews">
+        <div class="section-header">
+            <h2>User Reviews</h2>
+        </div>
+        <div class="reviews-container">
+            <div class="review-item">
+                <p><i>"BrodoStudio is by far the program for everyone. I'm surprised it’s so affordable. Definitely recommend it!"</i></p>
+                <p class="name">Brodo G</p>
+            </div>
+            <div class="review-item">
+                <p><i>"Finally, a design program that doesn't overcomplicate things. After years of struggling with Adobe, I'm thrilled BrodoStudio made design fun again!"</i></p>
+                <p class="name">Vy N</p>
+            </div>
+			<div class="review-item">
+                <p><i>"I hated the restrictions of other programs, but BrodoStudio set me free, and for a great price too!"</i></p>
+                <p class="name">Ben V</p>
+            </div>
+			<div class="review-item">
+                <p><i>"Why is it so easy to use? By far the best program, 11/10 for sure!"</i></p>
+                <p class="name">Solly C</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="creative-tools">
+        <div class="section-header">
+            <h2>Our Creative Tools</h2>
+        </div>
+        <div class="tools-container">
+            <div class="tool-item">
+                <h3>BrodoStudio</h3>
+                <p>The BrodoBundle is more than just a collection of apps; it is the key to unlocking your creative potential.</p>
+            </div>
+            <div class="tool-item">
+                <h3>Brodo Ge</h3>
+                <p>Brodo GE is not just another graphic design tool, it is the gateway to your imagination.</p>
+            </div>
+            <div class="tool-item">
+                <h3>Brodo Ve</h3>
+                <p>Your stories deserve to be told with the brilliance and emotion that only Brodo VE can offer.</p>
+            </div>
+            <div class="tool-item">
+                <h3>Brodo Ap</h3>
+                <p>With Brodo AP, you are not just an animator, you are a storyteller, a dreamer, and a creator of worlds.</p>
+            </div>
+            <div class="tool-item">
+                <h3>Brodo Wi</h3>
+                <p>Building a website should want to bring your vision to the digital world, and with Brodo WI, it does.</p>
+            </div>
+            <div class="tool-item">
+                <h3>Brodo Wd</h3>
+                <p>Brodo WD is the powerhouse that will fuel your web development dreams. </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="tabs">
+        <div class="tab-container">
+            <ul class="tabs">
+                <li data-tab="brodo-bundle" class="active">BrodoBundle</li>
+                <li data-tab="brodo-ge">Brodo GE</li>
+                <li data-tab="brodo-ve">Brodo VE</li>
+                <li data-tab="brodo-ap">Brodo AP</li>
+                <li data-tab="brodo-wi">Brodo WI</li>
+                <li data-tab="brodo-wd">Brodo WD</li>
+            </ul>
+            <div class="tab-content active" id="brodo-bundle">
+                <h3>BrodoBundle</h3>
+                <p> With BrodoBundle, you will get Brodo GE, VE, AP, WI, and WD. Imagine having all the tools you need to bring your wildest ideas to life, all in one place. Whether you are sketching out a concept, editing a video, crafting a website, or bringing an animation to life, the BrodoBundle empowers you to turn your dreams into reality with unparalleled ease. Do not just create, create with passion, knowing that you have the ultimate toolkit at your fingertips. The BrodoBundle is not just a product; it is the partner that stands by your side as you breathe life into your visions. And with this all-in-one solution, you can excel in every craft you set your heart on, without breaking the bank.</p>
+            </div>
+            <div class="tab-content" id="brodo-ge">
+                <h3>Brodo GE</h3>
+                <p>Picture yourself effortlessly crafting stunning visuals, where every stroke, every colour, and every design element aligns perfectly with your vision. Brodo GE gives you the power to transform your ideas into breathtaking reality, all while feeling like an extension of your creativity. Forget the struggles with complicated software; with Brodo GE, you are free to focus on what truly matters, your art. Whether you are a seasoned pro or just starting out, Brodo GE invites you to explore the depths of your creative potential with a tool that is as enthusiastic about your designs as you are.
+				</p>
+				<p>&nbsp;</p>
+            </div>
+            <div class="tab-content" id="brodo-ve">
+                <h3>Brodo VE</h3>
+                <p>Imagine turning each and every raw footage into a captivating cinematic experience, where every cut, transition, and effect reflects the emotion and intent behind your vision. Brodo VE is more than just a video editor; it is the heartbeat of your storytelling. With it, you can craft videos that not only capture attention but also move hearts. Say goodbye to the frustration of clunky, overwhelming software, Brodo VE is designed to be as intuitive as your creative process, allowing you to bring your ideas to life with precision and passion.</p>
+				<p>&nbsp;</p>
+
+            </div>
+            <div class="tab-content" id="brodo-ap">
+                <h3>Brodo AP</h3>
+                <p>Brodo AP is where your imagination finds its wings. Imagine the joy of seeing your characters move, your stories unfold, and your worlds come to life with a tool that feels like it was made just for you. Whether it is the fluid grace of a 2D animation or the striking realism of 3D, Brodo AP empowers you to create animations that resonate with your audience. It is not just about making things move; it is about giving life to your ideas, all while feeling in complete control of your creative process. Start animating whenever, wherever.</p>
+				<p>&nbsp;</p>
+
+            </div>
+            <div class="tab-content" id="brodo-wi">
+                <h3>Brodo WI</h3>
+                <p>Imagine crafting a site that not only looks stunning but also feels like an extension of your personality, your brand, your voice. Brodo WI makes web design a joy, turning what could be a complex task into a seamless, creative experience. With drag-and-drop simplicity and the power to customize every detail, you are not just building a website, you are crafting an experience, one that reflects who you are and what you stand for. Let Brodo WI be the canvas for your presence and watch as your ideas flourish on screen.</p>
+				<p>&nbsp;</p>
+
+            </div>
+            <div class="tab-content" id="brodo-wd">
+                <h3>Brodo WD</h3>
+                <p> Imagine a tool that not only speeds up your workflow, but also inspires you to push the boundaries of what is possible online. With Brodo WD, you are not just writing code, you are crafting the future, one line at a time. It is about more than just getting the job done; it is about building something you are proud of, something that stands out in the digital landscape. Whether you are developing a complex web application or a simple site, Brodo WD gives you the power, precision, and passion to create something truly extraordinary.</p>
+				<p>&nbsp;</p>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 BrodoStudio. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.tabs li').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                document.querySelectorAll('.tabs li').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+	
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+	const customCursor = document.createElement('div');
+    customCursor.classList.add('custom-cursor');
+    document.body.appendChild(customCursor);
+
+    document.addEventListener('mousemove', (e) => {
+        customCursor.style.left = `${e.clientX}px`;
+        customCursor.style.top = `${e.clientY}px`;
+    });
+
+    document.addEventListener('mouseover', (e) => {
+        if (e.target.tagName === 'BUTTON') {
+            customCursor.classList.add('animate');
+        } else {
+            customCursor.classList.remove('animate'); 
+        }
+    });
+
+    window.addEventListener('scroll', () => {
+        customCursor.style.position = 'fixed';
+    });
+});
+</script>
+</body>
+</html>
+
